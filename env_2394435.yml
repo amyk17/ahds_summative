@@ -1,0 +1,8 @@
+name: env_2394435
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - r-base=4.4.1
+  - r-tidyverse=2.0.0
+prefix: /Users/amyknight/miniconda3/envs/env_2394435
