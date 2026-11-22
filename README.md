@@ -10,3 +10,6 @@ Creates a URL which uses the esearch command of the E-uilities programme to down
 
 02_download_articles.sh
 Uses the efetch command form the E-utilities programme to obtain the abstract and titles of papers to the corresponding PMID from the list produced in the previous script. 
+
+03_clean_data.sh
+
