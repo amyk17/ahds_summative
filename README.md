@@ -6,6 +6,7 @@ Use the VS Code terminal to create the conda environment from "environment.yml",
 
 
 01_PMID_derivation.sh
-Creates a URL which uses the esearch command of the E-uiliies programme to download a list of PubMed ID's (PMID) in a xml format. 
+Creates a URL which uses the esearch command of the E-uilities programme to download a list of PubMed ID's (PMID) in a xml format. 
 
 02_download_articles.sh
+Uses the efetch command form the E-utilities programme to obtain the abstract and titles of papers to the corresponding PMID from the list produced in the previous script. 
