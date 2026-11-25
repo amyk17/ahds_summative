@@ -51,11 +51,11 @@ for f in "$datadir"/batch_??.xml; do
 done
 
 ##create directory to put checked & altered articles in 
-mkdir -p "../data/raw/checked"
+mkdir -p "../data/clean"
 
 ##removing articles with missing abstracts from the formatted copies
 for f in ../data/raw/formatted/batch_??.xml; do
-  out="../data/raw/checked/$(basename "$f")"
+  out="../data/clean/$(basename "$f")"
   awk '
     /<PubmedArticle>/ { inrec=1; rec=""; has=0 }
     inrec {
@@ -70,11 +70,11 @@ done
 
 
 ##checking the new number of articles with abstracts
-num_ab_articles=$(cat ../data/raw/checked/batch_??.xml | grep -o '<Abstract>' | wc -l)
+num_ab_articles=$(cat ../data/clean/batch_??.xml | grep -o '<Abstract>' | wc -l)
 echo "Number of articles with an abstact: $num_ab_articles"
 
 #checking the new number of book articles with abstracts
-num_book_ab=$(cat ../data/raw/checked/batch_??.xml | perl -0777 -ne '
+num_book_ab=$(cat ../data/clean/batch_??.xml | perl -0777 -ne '
   $with_abstract = grep { /<Abstract/ } /<PubmedBookArticle>.*?<\/PubmedBookArticle>/gs;
   print $with_abstract
   ')
