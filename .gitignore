@@ -1,6 +1,6 @@
 data/
 .DS_Store
-results
+results/therapy_wordcloud.png
 .snakemake
 .Rhistory
 .RData
