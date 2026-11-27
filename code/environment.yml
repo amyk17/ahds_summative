@@ -5,7 +5,7 @@ channels:
   - bioconda
 dependencies:
   - snakemake=7.26
-  - python=3.14
+  - python=3.12
   - r-base=4.4.1
   - r-tidyverse=2.0.0
 prefix: /Users/amyknight/miniconda3/envs/env_2394435
