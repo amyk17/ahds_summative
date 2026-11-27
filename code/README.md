@@ -1,0 +1,1 @@
+README file created to be an input for the first rule of the Snakemake pipeline 
