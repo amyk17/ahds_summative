@@ -1,43 +1,49 @@
 rule all: ##might need to be profile
     input:
+        "logs/01_pmid_derivation.log"
+        "logs/02_download_articles.log"
+        "logs/03_check_data.log"
+        "data/clean/article_information.rds"
+        "data/clean/article_search.rds"
+        "data/clean/top_terms.rds"
+        "results/therapy_wordcloud.png"
 
-
-rule derive_PMID:
-    input: ###make file to prompt script 01 for downloading the data or could make a precursor that makes a generic README to be the input 
-
+rule derive_pmid:
+    input: 
+        "code/README.md"
     output:
-        "data/raw/PMID_amr.xml"
+        "logs/01_pmid_derivation.log"
     shell:
     """
     cd code
-    bash 01_PMID_derivation.sh 
+    bash 01_pmid_derivation.sh > ../logs/01_pmid_derivation.log
     """
 
 rule download_articles:
     input:
-
+        "logs/01_pmid_derivation.log"
     output:
-        
+        "logs/02_dowload_articles.log"
     shell:
         """
         cd code
-        bash 02_download_articles.sh
+        bash 02_download_articles.sh > ../logs/download_articles.log
         """
 
 rule check_data:
     input:
-
+        "logs/02_dowload_articles.log"
     output:
-
+        "logs/03_check_data.log"
     shell:
         """
         cd code
-        bash 03_checking_data.sh
+        bash 03_checking_data.sh > ../logs/03_check_data.log
         """
 
 rule parse_data:
     input:
-
+        "logs/03_check_data.log"
     output:
         "data/clean/article_information.rds"
     shell:
@@ -46,7 +52,7 @@ rule parse_data:
         Rscript 04_parsing_data.R
         """
 
-rule LDA_preparation:
+rule lda_preparation:
     input:
         "data/clean/article_information.rds"
     output:
@@ -54,10 +60,10 @@ rule LDA_preparation:
     shell:
         """
         cd code
-        Rscript 05_prep_LDA.R
+        Rscript 05_prep_lda.R
         """
 
-rule LDA:
+rule lda:
     input:
         "data/clean/article_search.rds"
     output:
@@ -65,7 +71,7 @@ rule LDA:
     shell:
         """
         cd code
-        Rscript 06_LDA.R
+        Rscript 06_lda.R
         """
 
 rule visualisation:
@@ -80,7 +86,22 @@ rule visualisation:
         """
 
 rule clean:
-    input:
+    shell: """
+    if [-d results]; then
+        rm -r results  
+    else
+        echo directory results does not exist
+    fi
+    if [-d data/clean]; then
+        rm -r data/clean 
+    else
+        echo directory clean does not exist
+    fi
+    if [-d data/raw]; then
+        rm -r data/raw
+    else
+        echo directory raw does not exist 
+    fi
 
 
 
