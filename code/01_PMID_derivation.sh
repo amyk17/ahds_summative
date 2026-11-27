@@ -1,7 +1,10 @@
 #!/bin/bash
 
-#make new directory
+#make directory for raw data
 mkdir -p ../data/raw
+
+#make directory for snakemake logs
+mkdir -p ../logs
 
 #set working directory
 datadir="${1:-../data/raw}"
