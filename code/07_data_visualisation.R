@@ -13,7 +13,6 @@ library(ggplot2)
 library(tidyverse)
 
 ##wordcloud
-install.packages("ggwordcloud")
 library(ggwordcloud)
 
 ##set working directory

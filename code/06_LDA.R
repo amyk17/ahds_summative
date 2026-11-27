@@ -4,11 +4,9 @@
 library(tidyverse)
 
 ####install and load LDA generation
-install.packages("topicmodels")
 library(topicmodels)
 
 ##for LDA
-install.packages("tidylda")
 library(tidylda)
 
 #for paths

@@ -1,21 +1,19 @@
 #!/bin/Rscript
 
-##install packages
-install.packages("XML")
-
-##download packages
+#download packages
 #tidyverse
 library(tidyverse)
 
 #reading the xml files 
 library(xml2)
 library(XML)
+library(this.path)
 
 #setting the working directory
 setwd(paste0(this.dir(), "/.."))
 
 ##create variable for checked data directory 
-clean_dir <- "./data/clean/"
+clean_dir <- "data/clean/"
 
 ##creating an object of batch_??.xml files to specify file use
 articles<-list.files(clean_dir, pattern="^batch_.*\\.xml$", full.names=TRUE)
