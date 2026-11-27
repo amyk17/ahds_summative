@@ -2,6 +2,9 @@
 
 ##Data preparation for a seeded Latent Dirichelt Allocation 
 
+#for paths
+library(this.path)
+
 #for tidyverse
 library(tidyverse)
 
