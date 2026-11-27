@@ -1,6 +1,6 @@
 data/
 .DS_Store
-results/
+results
 .snakemake
 .Rhistory
 .RData
