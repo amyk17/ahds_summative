@@ -51,7 +51,7 @@ therapy_cloud <- (ggplot(data=top_terms, mapping=terms_map) +
                         values = word_colours,
                         name= "Therapies") +
     theme_minimal() #+
-    #facet_wrap("topic")
+    #facet_wrap("topic") ##to sort into individual therapy specific wordclouds
 )
 
 ##creating results directory
