@@ -1,11 +1,11 @@
-rule all: ##might need to be profile
+rule all: 
     input:
-        "logs/01_pmid_derivation.log"
-        "logs/02_download_articles.log"
-        "logs/03_check_data.log"
-        "data/clean/article_information.rds"
-        "data/clean/article_search.rds"
-        "data/clean/top_terms.rds"
+        "logs/01_pmid_derivation.log",
+        "logs/02_download_articles.log",
+        "logs/03_check_data.log",
+        "data/clean/article_information.rds",
+        "data/clean/article_search.rds",
+        "data/clean/top_terms.rds",
         "results/therapy_wordcloud.png"
 
 rule derive_pmid:
@@ -14,31 +14,31 @@ rule derive_pmid:
     output:
         "logs/01_pmid_derivation.log"
     shell:
-    """
-    cd code
-    bash 01_pmid_derivation.sh > ../logs/01_pmid_derivation.log
-    """
+        """
+        cd code
+        bash 01_pmid_derivation.sh > ../logs/01_pmid_derivation.log
+        """
 
 rule download_articles:
     input:
         "logs/01_pmid_derivation.log"
     output:
-        "logs/02_dowload_articles.log"
+        "logs/02_download_articles.log"
     shell:
         """
         cd code
-        bash 02_download_articles.sh > ../logs/download_articles.log
+        bash 02_download_articles.sh > ../logs/02_download_articles.log
         """
 
 rule check_data:
     input:
-        "logs/02_dowload_articles.log"
+        "logs/02_download_articles.log"
     output:
         "logs/03_check_data.log"
     shell:
         """
         cd code
-        bash 03_checking_data.sh > ../logs/03_check_data.log
+        bash 03_check_data.sh > ../logs/03_check_data.log
         """
 
 rule parse_data:
@@ -87,21 +87,26 @@ rule visualisation:
 
 rule clean:
     shell: """
-    if [-d results]; then
+    if [ -d results ]; then
         rm -r results  
     else
         echo directory results does not exist
     fi
-    if [-d data/clean]; then
+    if [ -d data/clean ]; then
         rm -r data/clean 
     else
         echo directory clean does not exist
     fi
-    if [-d data/raw]; then
+    if [ -d data/raw ]; then
         rm -r data/raw
     else
         echo directory raw does not exist 
     fi
-
+    if [ -d logs ]; then
+        rm -r logs
+    else
+        echo directory logs does not exist
+    fi
+    """
 
 
