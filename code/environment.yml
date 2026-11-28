@@ -7,6 +7,13 @@ dependencies:
   - snakemake=7.26
   - r-base=4.4.1
   - r-tidyverse=2.0.0
+  - r-xml2
+  - r-topicmodels
+  - r-tidylda
+  - r-XML
+  - r-this.path
+  - r-tidytext 
+  - r-ggwordcloud 
 prefix: /Users/amyknight/miniconda3/envs/env_2394435
 
 

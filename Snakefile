@@ -18,7 +18,7 @@ rule derive_pmid:
     shell:
         """
         cd code
-        bash 01_pmid_derivation.sh > ../logs/01_pmid_derivation.log
+        bash 01_PMID_derivation.sh > ../logs/01_pmid_derivation.log
         """
 
 rule download_articles:
@@ -62,7 +62,7 @@ rule lda_preparation:
     shell:
         """
         cd code
-        Rscript 05_prep_lda.R
+        Rscript 05_prep_LDA.R
         """
 
 rule lda:
@@ -73,7 +73,7 @@ rule lda:
     shell:
         """
         cd code
-        Rscript 06_lda.R
+        Rscript 06_LDA.R
         """
 
 rule visualisation:
