@@ -1,0 +1,14 @@
+cluster-cancel: scancel %j
+cluster:
+  sbatch
+    --partition=teach_cpu
+    --account=sscm040064
+    --nodes=1
+    --time=0:10:00
+    --mem=100M
+    --ntasks-per-node=1
+
+##directories
+input_dir: "code/README.md"
+outpur_dir: "results/therapy_wordcloud.png"
+

@@ -1,3 +1,5 @@
+configfile: "config.yml"
+
 rule all: 
     input:
         "logs/01_pmid_derivation.log",
@@ -86,7 +88,7 @@ rule visualisation:
         """
 
 rule clean:
-    shell: """
+    shell:"""
     if [ -d results ]; then
         rm -r results  
     else
