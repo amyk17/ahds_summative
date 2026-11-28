@@ -7,6 +7,5 @@ cluster:
     --mem=100M
     --ntasks-per-node=1
     
-
 executor: slurm
-jobs: 8
+jobs: 8 
