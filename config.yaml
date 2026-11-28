@@ -1,11 +1,13 @@
+cluster-cancel: scancel %j
 cluster:
   sbatch
     --partition=teach_cpu
     --account=sscm040064
     --nodes=1
-    --time=0:20:00
-    --mem=100M
+    --time=0:10:00
+    --mem=1000M
     --ntasks-per-node=1
-    
-executor: slurm
-jobs: 8 
+
+jobs: 8  
+
+
